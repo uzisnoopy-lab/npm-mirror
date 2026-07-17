@@ -14,6 +14,7 @@ help:
 	@echo "  make clean     - Remove container"
 	@echo "  make reset     - Remove container and storage"
 	@echo "  make shell     - Open shell inside container"
+	@echo "  make preload  - Start install package"
 
 up:
 	$(DOCKER_COMPOSE) up -d
@@ -45,3 +46,7 @@ reset:
 
 shell:
 	docker exec -it npm-mirror sh
+
+preload:
+	chmod +x scripts/install.sh
+	./scripts/install.sh
