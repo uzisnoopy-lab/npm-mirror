@@ -107,7 +107,7 @@ npm config set registry http://localhost:4873
 <br/>
 
 <p align="center">
-  <b><i>به امید روز های بهتر :)</i></b>
+  <b><i>به امید روزهای بهتر و زندگی پایدارتر :)</i></b>
 </p>
 
 <p align="center">
