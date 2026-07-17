@@ -107,5 +107,9 @@ npm config set registry http://localhost:4873
 <br/>
 
 <p align="center">
+  <b><i>به امید روز های بهتر :)</i></b>
+</p>
+
+<p align="center">
   <b><i>Made with ❤️ for developers by CipherUnit</i></b>
 </p>
