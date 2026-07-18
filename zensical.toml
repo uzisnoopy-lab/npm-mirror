@@ -1,9 +1,12 @@
 [project]
-site_name = "NPM Mirror — Self-Hosted Verdaccio Registry & Offline NPM Cache"
+site_name = "NPM Mirror"
 site_description = "NPM Mirror is a self-hosted npm registry built on Verdaccio that mirrors and caches npm/pnpm/yarn packages. Keep installing dependencies fast, offline-capable, and available even during internet outages — by Cipher Unit."
 site_author = "Mohammad Taha Batoomi"
 site_url = "https://cipherunits.github.io/npm-mirror/"
 copyright = "Copyright &copy; 2026 Cipher Unit"
+
+extra_css = ["stylesheets/extra.css"]
+extra_javascript = ["javascripts/scroll-reveal.js"]
 
 repo_url = "https://github.com/cipherunits/npm-mirror"
 repo_name = "cipherunits/npm-mirror"

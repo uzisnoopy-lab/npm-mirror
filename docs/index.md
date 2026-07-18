@@ -1,3 +1,8 @@
+---
+title: "NPM Mirror — Offline NPM Registry Cache | Cipher Unit"
+description: "Self-hosted Verdaccio-based npm registry that mirrors and caches npm, pnpm, and yarn packages for faster installs and offline development during network outages."
+---
+
 # NPM Mirror
 
 The **NPM Mirror** service is an internal Registry based on **Verdaccio** that acts as a Mirror and Cache for the main npm Registry.
