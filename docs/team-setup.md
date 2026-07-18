@@ -1,34 +1,34 @@
-# راه‌اندازی برای تیم (الگوی سرور مرکزی)
+# Setup for Teams (Central Server Pattern)
 
-راه‌اندازی توضیح‌داده‌شده در [getting-started](./getting-started.md) برای اجرای محلی روی یک سیستم کافی است، اما الگوی توصیه‌شده برای یک تیم این‌گونه نیست که هر عضو تیم جداگانه سرویس و Cache خودش را بالا بیاورد.
+The setup described in [getting-started](./getting-started.md) is sufficient for running locally on a single system, but the recommended pattern for a team is not for each team member to spin up their own service and Cache separately.
 
-## چرا سرور مرکزی؟
+## Why a Central Server?
 
-- فقط یک نفر (یا یک CI Job) نیاز دارد `make preload` را اجرا کند؛ بقیه‌ی اعضای تیم فقط Registry را روی همان سرور تنظیم می‌کنند.
-- Cache بین همه‌ی اعضا مشترک است؛ هرچه یک نفر دانلود کند، برای بقیه هم در دسترس است.
-- مدیریت، Backup و بروزرسانی فقط در یک نقطه انجام می‌شود.
+- Only one person (or one CI Job) needs to run `make preload`; the rest of the team just configures the Registry to point to that same server.
+- The Cache is shared among all members; whatever one person downloads becomes available to everyone else.
+- Management, Backup, and updates are all handled in a single place.
 
-## نحوه‌ی راه‌اندازی
+## How to Set It Up
 
-۱. روی یک سرور داخلی تیم (مثلاً یک VPS یا سرور داخل شبکه‌ی شرکت)، پروژه را طبق [getting-started](./getting-started.md) بالا بیاورید:
+1. On an internal team server (e.g., a VPS or a server inside the company network), bring up the project following [getting-started](./getting-started.md):
 
 ```bash
-git clone https://github.com/MohammadTahaBatoomi/npm-mirror
+git clone https://github.com/cipherunits/npm-mirror
 cd npm-mirror
 make up
 make preload
 ```
 
-۲. مطمئن شوید پورت `4873` از شبکه‌ی داخلی تیم قابل دسترسی است (نه صرفاً `localhost`).
+2. Make sure port `4873` is accessible from the team's internal network (not just `localhost`).
 
-۳. هر عضو تیم فقط این دستور را روی سیستم خودش اجرا می‌کند:
+3. Each team member only needs to run this command on their own system:
 
 ```bash
-npm config set registry http://<آدرس-سرور-تیم>:4873
+npm config set registry http://<team-server-address>:4873
 ```
 
-## نکات
+## Notes
 
-- سرور مرکزی یک نقطه‌ی حساس (Single Point of Failure) است؛ حتماً [Backup دوره‌ای](./backup.md) را فعال کنید.
-- برای شروع سریع‌تر Cache، از [Preload با Profile مناسب استک تیم](./preload.md) استفاده کنید (مثلاً `make preload PROFILE=frontend`).
-- برای بررسی سلامت سرور از `make status` استفاده کنید.
+- The central server is a sensitive point (Single Point of Failure); be sure to enable [periodic Backups](./backup.md).
+- For a faster Cache start, use [Preload with a Profile suited to the team's stack](./preload.md) (e.g., `make preload PROFILE=frontend`).
+- Use `make status` to check the server's health.

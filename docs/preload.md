@@ -1,12 +1,12 @@
-# پیش‌بارگذاری پکیج‌ها
+# Preloading Packages
 
-برای پیش‌بارگذاری همه‌ی پکیج‌های موجود در `preload/packages.conf`:
+To preload all packages listed in `preload/packages.conf`:
 
 ```bash
 make preload
 ```
 
-یا به صورت دستی:
+or manually:
 
 ```bash
 cd preload
@@ -14,7 +14,7 @@ chmod +x install-packages.sh
 ./install-packages.sh
 ```
 
-## ساختار پوشه preload
+## preload Folder Structure
 
 ```
 preload/
@@ -25,17 +25,17 @@ preload/
 
 ### packages.conf
 
-لیست پکیج‌هایی که باید پیش‌بارگذاری شوند، هر خط به این شکل:
+A list of packages to be preloaded, with each line in this format:
 
 ```
 next@13                             #tags: frontend,framework
 ```
 
-اضافه یا حذف پکیج فقط با ویرایش همین فایل انجام می‌شود؛ نیازی به تغییر در اسکریپت یا Makefile نیست.
+Adding or removing a package is done simply by editing this file; no changes to the script or Makefile are needed.
 
-## Profile ها
+## Profiles
 
-هر پکیج یک یا چند تگ دارد (`frontend`, `backend`, `mobile`, `desktop`, `tooling`, `testing`, `database`, ...). با متغیر `PROFILE` می‌توانید فقط پکیج‌های یک تگ خاص را پیش‌بارگذاری کنید:
+Each package has one or more tags (`frontend`, `backend`, `mobile`, `desktop`, `tooling`, `testing`, `database`, ...). Using the `PROFILE` variable, you can preload only the packages with a specific tag:
 
 ```bash
 make preload PROFILE=frontend
@@ -43,21 +43,21 @@ make preload PROFILE=backend
 make preload PROFILE=mobile
 ```
 
-اگر `PROFILE` مشخص نشود، مقدار پیش‌فرض `all` است و همه‌ی پکیج‌ها نصب می‌شوند.
+If `PROFILE` is not specified, the default value is `all`, and all packages are installed.
 
-لیست کامل تگ‌های موجود در ابتدای فایل `packages.conf` مستند شده است.
+The complete list of available tags is documented at the top of the `packages.conf` file.
 
 ## Incremental Preload
 
-اگر `make preload` را دوباره اجرا کنید، به صورت پیش‌فرض همه‌ی پکیج‌ها دوباره بررسی می‌شوند (چون Verdaccio خودش پکیج‌های موجود در Storage را دوباره دانلود نمی‌کند، ولی اسکریپت به‌صورت پیش‌فرض درخواست نصب را برای همه می‌فرستد). برای این‌که اسکریپت خودش هم پکیج‌هایی که قبلاً با موفقیت پردازش شده‌اند را رد کند:
+If you run `make preload` again, by default all packages are checked again (because Verdaccio itself doesn't re-download packages already in Storage, but the script by default sends an install request for all of them). To have the script itself also skip packages that have already been successfully processed:
 
 ```bash
 make preload INCREMENTAL=1
 ```
 
-وضعیت پکیج‌های نصب‌شده در فایل `preload/.preload-state` نگهداری می‌شود (در Git ذخیره نمی‌شود). برای شروع دوباره از صفر، این فایل را حذف کنید.
+The status of installed packages is kept in the `preload/.preload-state` file (not tracked in Git). To start over from scratch, delete this file.
 
-### ترکیب Profile و Incremental
+### Combining Profile and Incremental
 
 ```bash
 make preload PROFILE=frontend INCREMENTAL=1

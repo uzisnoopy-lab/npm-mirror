@@ -1,25 +1,25 @@
 [project]
 site_name = "NPM Mirror"
-site_description = "یک Registry داخلی مبتنی بر Verdaccio برای Mirror و Cache npm"
+site_description = "An internal Verdaccio-based Registry for mirroring and caching npm"
 site_author = "Mohammad Taha Batoomi"
-repo_url = "https://github.com/MohammadTahaBatoomi/npm-mirror"
+repo_url = "https://github.com/cipherunits/npm-mirror"
 edit_uri = "edit/main/docs/"
 
 docs_dir = "docs"
 site_dir = "site"
 
-language = "fa"
+language = "en"
 
 nav = [
-  { "شروع" = "index.md" },
-  { "نحوه کار" = "how-it-works.md" },
-  { "نصب و راه‌اندازی" = "getting-started.md" },
-  { "راه‌اندازی برای تیم" = "team-setup.md" },
-  { "پیکربندی" = "configuration.md" },
-  { "پیش‌بارگذاری" = "preload.md" },
-  { "Backup و Restore" = "backup.md" },
-  { "ساختار پروژه" = "structure.md" },
-  { "آفلاین بودن" = "offline.md" }
+  { "Getting Started" = "index.md" },
+  { "How It Works" = "how-it-works.md" },
+  { "Installation & Setup" = "getting-started.md" },
+  { "Team Setup" = "team-setup.md" },
+  { "Configuration" = "configuration.md" },
+  { "Preloading" = "preload.md" },
+  { "Backup and Restore" = "backup.md" },
+  { "Project Structure" = "structure.md" },
+  { "Offline Mode" = "offline.md" }
 ]
 
 features = [
@@ -39,8 +39,8 @@ features = [
 media = "(prefers-color-scheme)"
 scheme = "default"
 toggle.icon = "lucide/sun-moon"
-toggle.name = "تغییر تم"
+toggle.name = "Toggle theme"
 
 [[project.extra.social]]
 icon = "fontawesome/brands/github"
-link = "https://github.com/MohammadTahaBatoomi/npm-mirror"
+link = "https://github.com/cipherunits/npm-mirror"

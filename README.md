@@ -1,35 +1,35 @@
 # NPM Mirror
 <br/>
 
-یک Local NPM Registry مبتنی بر [Verdaccio](https://verdaccio.org/) که به عنوان Proxy Cache برای npmjs.org عمل می‌کند.
+A local NPM Registry based on [Verdaccio](https://verdaccio.org/) that acts as a Proxy Cache for npmjs.org.
 
-گاهی مشکل اصلی ما کد نیست؛ دسترسی به همان چند صد مگابایت dependency است که پروژه بدون آن‌ها بالا نمی‌آید.
+Sometimes our main problem isn't the code — it's access to the few hundred megabytes of dependencies that a project won't run without.
 
-  در کل NPM Mirror کمک می‌کند تا:
+Overall, NPM Mirror helps you to:
 
-- وابستگی کمتری به اینترنت داشته باشید
-- نصب پکیج‌ها سریع‌تر انجام شود
-- پکیج‌های موردنیاز در زمان قطعی اینترنت در دسترس باشند
-- یک Cache مشترک بین اعضای تیم داشته باشید
-
-<br/>
-
----
-
-## 📚 مستندات
-
-برای راه‌اندازی، تنظیمات و جزئیات کامل پروژه به مستندات مراجعه کنید:
-
-https://mohammadtahabatoomi.github.io/npm-mirror/
+- Reduce your dependency on the internet
+- Install packages faster
+- Have access to needed packages during internet outages
+- Have a shared cache among team members
 
 <br/>
 
 ---
 
-## نحوه عملکرد
+## 📚 Documentation
+
+For setup, configuration, and full project details, refer to the documentation:
+
+https://cipherunits.github.io/npm-mirror/
+
+<br/>
+
+---
+
+## How It Works
 
 ```text
-                    اولین درخواست
+                    First Request
 
            pnpm / npm / yarn
                     │
@@ -38,51 +38,50 @@ https://mohammadtahabatoomi.github.io/npm-mirror/
                     │
         ┌───────────┴───────────┐
         │                       │
-    در Cache وجود دارد؟      وجود ندارد؟
+    Exists in Cache?        Doesn't exist?
         │                       │
         ▼                       ▼
- ارسال به کاربر          دریافت از npmjs.org
+   Send to user           Fetch from npmjs.org
                                 │
                                 ▼
-                        ذخیره داخل Storage
+                        Save into Storage
                                 │
                                 ▼
-                         ارسال به کاربر
+                          Send to user
 ```
 
-بعد از اولین دانلود، پکیج داخل Storage ذخیره می‌شود و درخواست‌های بعدی بدون نیاز به دریافت دوباره از npmjs.org پاسخ داده می‌شوند.
+After the first download, the package is stored in Storage, and subsequent requests are served without needing to fetch again from npmjs.org.
 
 ---
 
-## امکانات
+## Features
 
-- 🚀 افزایش سرعت نصب dependency ها
-- 📦 ذخیره خودکار پکیج‌های استفاده شده
-- 🌐 رابط Proxy بین پروژه و npmjs.org
-- 📴 امکان استفاده از Cache در زمان قطعی اینترنت
-- 👥 اشتراک Cache بین اعضای تیم
-- ⚙️ سازگار با npm، pnpm و yarn
-
+- 🚀 Faster dependency installation
+- 📦 Automatic caching of used packages
+- 🌐 Proxy interface between the project and npmjs.org
+- 📴 Ability to use the cache during internet outages
+- 👥 Shared cache among team members
+- ⚙️ Compatible with npm, pnpm, and yarn
 
 ---
 
-## نصب و راه‌اندازی
+## Installation & Setup
 
 ```bash
-git clone https://github.com/MohammadTahaBatoomi/npm-mirror.git
+git clone https://github.com/cipherunits/npm-mirror.git
 
 cd npm-mirror
 
 make up
 ```
 
-پس از اجرا، Registry در آدرس زیر در دسترس خواهد بود:
+Once running, the Registry will be available at:
 
 ```
 http://localhost:4873
 ```
 
-برای تنظیم Registry می‌توانید از دستور زیر استفاده کنید:
+To configure the registry, you can use the following command:
 
 ```bash
 npm config set registry http://localhost:4873
@@ -90,18 +89,18 @@ npm config set registry http://localhost:4873
 <br/>
 <br/>
 
-# یک نکته کوچک :)
+# A Small Note :)
 
-و در نهایت NPM Mirror قرار نیست اینترنت ملی را عادی‌سازی کند؛ هدفش این است که وقتی دسترسی به npmjs.org به هر دلیلی سخت شد، توسعه‌دهنده‌ها بتوانند کارشان را ادامه دهند.
+And finally, NPM Mirror isn't meant to normalize national internet restrictions; its goal is that when access to npmjs.org becomes difficult for whatever reason, developers can keep working.
 
-در ایران، مخصوصاً در زمان‌هایی که اینترنت بین‌الملل محدود، ناپایدار یا به سمت اینترنت ملی سوق داده می‌شود، یکی از اولین مشکلات تیم‌های توسعه دسترسی به dependency هایی است که پروژه‌ها به آن‌ها وابسته هستند.
+In Iran, especially during times when international internet is limited, unstable, or pushed toward the national internet, one of the first problems development teams face is access to the dependencies their projects rely on.
 
-یک Mirror خوب همه مشکلات اینترنت را حل نمی‌کند، اما کمک می‌کند تا در شرایط اختلال، بخش بزرگی از وابستگی شما به خارج از شبکه حذف شود و بتوانید توسعه را ادامه دهید.
+A good mirror doesn't solve all internet problems, but it helps remove a large part of your dependency on the outside network during disruptions, so you can keep developing.
 
-چون اینترنت اینجا گاهی شبیه یک Dependency بدون Lockfile است؛ هیچ‌وقت دقیق نمی‌دانی فردا چه نسخه‌ای قرار است نصب شود. 🙂
+Because the internet here is sometimes like a dependency without a lockfile; you never quite know what version will be installed tomorrow. 🙂
 
-پس Mirror داشته باشید، Cache داشته باشید، ولی همیشه یک برنامه B هم داشته باشید؛
-(البته اگر برنامه B جواب نداد، شاید وقتش باشد سراغ اسنپ برویم 😄)
+So have a mirror, have a cache, but always have a plan B too;
+(and if plan B doesn't work either, maybe it's time to turn to Snapp 😄)
 
 
 <br/>
@@ -109,7 +108,7 @@ npm config set registry http://localhost:4873
 <br/>
 
 <p align="center">
-  <b><i>به امید روزهای بهتر و زندگی پایدارتر :)</i></b>
+  <b><i>Wishing for better days and a more stable life :)</i></b>
 </p>
 
 <p align="center">

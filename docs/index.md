@@ -1,20 +1,20 @@
 # NPM Mirror
 
-سرویس **NPM Mirror** یک Registry داخلی مبتنی بر **Verdaccio** است که به عنوان یک Mirror و Cache برای Registry اصلی npm عمل می‌کند.
+The **NPM Mirror** service is an internal Registry based on **Verdaccio** that acts as a Mirror and Cache for the main npm Registry.
 
-هدف این پروژه کاهش وابستگی به اینترنت، افزایش سرعت نصب پکیج‌ها و امکان نصب پکیج‌ها در زمان قطعی اینترنت است.
+The goal of this project is to reduce dependency on the internet, increase package installation speed, and enable package installation during internet outages.
 
-## مزایا
+## Benefits
 
-- کاهش مصرف اینترنت
-- افزایش سرعت نصب پکیج‌ها
-- امکان نصب پکیج‌های کش‌شده در زمان قطعی اینترنت
-- اشتراک یک Cache بین تمام توسعه‌دهندگان
-- بدون نیاز به تغییر در پروژه‌ها
+- Reduced internet usage
+- Increased package installation speed
+- Ability to install cached packages during internet outages
+- A shared Cache across all developers
+- No need to change existing projects
 
-## هدف نهایی
+## Ultimate Goal
 
-تمام توسعه‌دهندگان شرکت تنها از یک Registry داخلی استفاده می‌کنند.
+All developers in the company use only a single internal Registry.
 
 ```
 Developer
@@ -27,4 +27,4 @@ NPM Mirror
       └── npmjs.org
 ```
 
-در نتیجه سرعت نصب افزایش می‌یابد، مصرف اینترنت کاهش پیدا می‌کند و در زمان قطعی اینترنت، پکیج‌های کش‌شده همچنان قابل نصب خواهند بود.
+As a result, installation speed increases, internet usage decreases, and during internet outages, cached packages can still be installed.

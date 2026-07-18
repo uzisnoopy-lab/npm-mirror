@@ -1,7 +1,7 @@
-# نحوه عملکرد
+# How It Works
 
 ```text
-                    اولین درخواست
+                    First Request
 
            pnpm / npm / yarn
                     │
@@ -10,50 +10,50 @@
                     │
         ┌───────────┴───────────┐
         │                       │
-    در Cache وجود دارد؟      وجود ندارد؟
+   Exists in Cache?         Doesn't exist?
         │                       │
         ▼                       ▼
- ارسال به کاربر          دریافت از npmjs.org
+   Sent to user           Fetched from npmjs.org
                                 │
                                 ▼
-                        ذخیره داخل Storage
+                        Stored inside Storage
                                 │
                                 ▼
-                         ارسال به کاربر
+                          Sent to user
 ```
 
-پس از اولین دانلود، نسخه موردنظر داخل سرور ذخیره شده و درخواست‌های بعدی مستقیماً از Storage پاسخ داده می‌شوند.
+After the first download, the desired version is stored on the server, and subsequent requests are served directly from Storage.
 
-## روند نصب یک پکیج
+## Package Installation Process
 
-فرض کنید دستور زیر اجرا شود:
+Suppose the following command is run:
 
 ```bash
 pnpm add react
 ```
 
-مراحل انجام کار:
+Steps involved:
 
-1. درخواست به Verdaccio ارسال می‌شود.
-2. بررسی می‌شود که پکیج داخل Cache وجود دارد یا خیر.
-3. اگر وجود داشته باشد مستقیماً ارسال می‌شود.
-4. در غیر این صورت از Registry رسمی npm دانلود می‌شود.
-5. داخل Storage ذخیره می‌شود.
-6. به Client ارسال می‌شود.
+1. The request is sent to Verdaccio.
+2. It checks whether the package exists in Cache.
+3. If it exists, it's sent directly.
+4. Otherwise, it's downloaded from the official npm Registry.
+5. It's stored inside Storage.
+6. It's sent to the Client.
 
-از این پس تمام کاربران همان نسخه را از Cache دریافت خواهند کرد.
+From then on, all users will receive the same version from the Cache.
 
-## نصب پروژه‌های موجود
+## Installing Existing Projects
 
-اگر پروژه‌ای دارای `package.json` باشد:
+If a project has a `package.json`:
 
 ```bash
 pnpm install
 ```
 
-Verdaccio تمام Dependencyها را بررسی می‌کند. برای هر Dependency:
+Verdaccio checks all Dependencies. For each Dependency:
 
-- اگر قبلاً دانلود شده باشد از Cache نصب می‌شود.
-- اگر دانلود نشده باشد از npmjs دریافت شده و سپس ذخیره می‌شود.
+- If it has already been downloaded, it's installed from Cache.
+- If it hasn't been downloaded, it's fetched from npmjs and then stored.
 
-بنابراین با گذشت زمان Cache بزرگ‌تر و کامل‌تر خواهد شد.
+As a result, the Cache grows larger and more complete over time.

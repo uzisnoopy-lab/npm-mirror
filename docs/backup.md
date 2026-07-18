@@ -1,41 +1,41 @@
-# Backup و Restore
+# Backup and Restore
 
-پوشه‌ی `storage/` تنها منبع Cache شماست. از دست رفتن آن یعنی نیاز به دانلود دوباره‌ی همه‌ی پکیج‌ها از ابتدا. به همین دلیل، به‌خصوص وقتی از الگوی «سرور مرکزی مشترک» استفاده می‌کنید (نگاه کنید به [team-setup](./team-setup.md))، گرفتن Backup دوره‌ای ضروری است.
+The `storage/` folder is your only source of Cache. Losing it means having to download all packages again from scratch. For this reason, especially when you're using the "shared central server" pattern (see [team-setup](./team-setup.md)), taking periodic Backups is essential.
 
-## گرفتن Backup
+## Taking a Backup
 
 ```bash
 make backup
 ```
 
-این دستور یک فایل فشرده با نام `backups/storage-YYYYMMDD-HHMMSS.tar.gz` می‌سازد.
+This command creates a compressed file named `backups/storage-YYYYMMDD-HHMMSS.tar.gz`.
 
-پیشنهاد می‌شود این دستور را به‌صورت یک Cron Job روزانه یا هفتگی روی سرور تنظیم کنید، مثلاً:
+It's recommended to set up this command as a daily or weekly Cron Job on the server, for example:
 
 ```bash
-# هر شب ساعت ۳ بامداد
+# Every night at 3 AM
 0 3 * * * cd /path/to/npm-mirror && make backup
 ```
 
-می‌توانید فایل‌های داخل `backups/` را هم به یک مقصد خارجی (مثل یک دیسک دیگر یا Storage ابری) کپی کنید تا در صورت از دست رفتن کل سرور هم داده در دسترس بماند.
+You can also copy the files inside `backups/` to an external destination (such as another disk or Cloud Storage) so that data remains available even if the entire server is lost.
 
-## بازگردانی (Restore)
+## Restore
 
 ```bash
 make restore FILE=backups/storage-20260718-030000.tar.gz
 ```
 
-این دستور:
+This command:
 
-1. سرویس Verdaccio را متوقف می‌کند
-2. پوشه‌ی `storage/` فعلی را حذف می‌کند
-3. Backup انتخاب‌شده را استخراج می‌کند
-4. سرویس را دوباره بالا می‌آورد
+1. Stops the Verdaccio service
+2. Deletes the current `storage/` folder
+3. Extracts the selected Backup
+4. Brings the service back up
 
-## بررسی سلامت سرور
+## Checking Server Health
 
 ```bash
 make status
 ```
 
-این دستور وضعیت کانتینر، در دسترس بودن Registry، و حجم فعلی `storage/` را نمایش می‌دهد. می‌توانید از آن برای مانیتورینگ ساده یا هشدار دستی استفاده کنید.
+This command shows the container status, Registry availability, and the current size of `storage/`. You can use it for simple monitoring or manual alerting.

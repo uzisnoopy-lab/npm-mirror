@@ -1,4 +1,4 @@
-# ساختار پروژه
+# Project Structure
 
 ```
 npm_mirrors/
@@ -17,39 +17,35 @@ npm_mirrors/
 
 ## docker-compose.yml
 
-فایل اصلی اجرای سرویس Docker.
+The main file for running the Docker service.
 
-مسئولیت‌ها:
+Responsibilities:
 
-- اجرای کانتینر Verdaccio
-- اتصال Volumeها
-- انتشار پورت سرویس
-- مدیریت Restart Policy
+- Running the Verdaccio container
+- Connecting Volumes
+- Publishing the service port
+- Managing the Restart Policy
 
 ## config/
 
-این پوشه شامل تنظیمات Verdaccio است.
+This folder contains Verdaccio's settings.
 
 ```
-config/
-└── config.yaml
-```
+The following items are defined in this file:
 
-در این فایل موارد زیر تعریف می‌شوند:
+- The main npm Registry
+- Access rules
+- Cache settings
+- Authentication settings
+- Logging settings
 
-- Registry اصلی npm
-- قوانین دسترسی
-- تنظیمات کش
-- تنظیمات Authentication
-- تنظیمات Logging
-
-این فایل مغز اصلی سرویس محسوب می‌شود.
+This file is considered the core brain of the service.
 
 ## storage/
 
-مهم‌ترین پوشه پروژه. تمام اطلاعات کش شده داخل این پوشه قرار می‌گیرند.
+The most important folder in the project. All cached data is stored inside this folder.
 
-نمونه:
+Example:
 
 ```
 storage/
@@ -60,12 +56,12 @@ storage/
 └── ...
 ```
 
-اگر این پوشه حذف شود، تمام Cache از بین خواهد رفت. به همین دلیل باید از آن Backup تهیه شود؛ نگاه کنید به [backup.md](./backup.md).
+If this folder is deleted, the entire Cache will be lost. For this reason, it must be Backed up; see [backup.md](./backup.md).
 
 ## backups/
 
-خروجی دستور `make backup`. فایل‌های فشرده‌ی `storage/` با برچسب زمانی اینجا ذخیره می‌شوند. این پوشه در Git ذخیره نمی‌شود.
+The output of the `make backup` command. Compressed `storage/` files with a timestamp are stored here. This folder is not tracked in Git.
 
 ## plugins/
 
-پوشه‌ای برای پلاگین‌های سفارشی Verdaccio. در حال حاضر خالی است و در صورت نیاز به پلاگین‌های سفارشی می‌توانید فایل‌های مربوطه را در اینجا قرار دهید.
+A folder for custom Verdaccio plugins. It's currently empty, and if you need custom plugins, you can place the relevant files here.

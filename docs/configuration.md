@@ -1,6 +1,6 @@
-# پیکربندی Registry
+# Registry Configuration
 
-پس از اجرای سرویس، باید Registry روی سیستم خود تنظیم کنید.
+After running the service, you need to configure the Registry on your system.
 
 ## npm
 

@@ -1,27 +1,27 @@
-# رفتار در زمان قطعی اینترنت
+# Behavior During Internet Outages
 
-فرض کنید قبلاً این پروژه نصب شده باشد:
-
-```bash
-pnpm install
-```
-
-و تمام Dependencyها داخل Cache قرار گرفته باشند.
-
-در صورت قطع اینترنت:
+Suppose this project has already been installed:
 
 ```bash
 pnpm install
 ```
 
-بدون نیاز به اینترنت انجام خواهد شد. تنها شرط این است که نسخه موردنیاز قبلاً داخل Cache ذخیره شده باشد.
+and all Dependencies have been placed inside the Cache.
 
-## نکات مهم
+If the internet goes down:
 
-### Storage را حذف نکنید
+```bash
+pnpm install
+```
 
-پوشه Storage شامل تمام Cache سیستم است. حذف آن برابر است با دانلود مجدد تمام پکیج‌ها.
+will run without needing the internet. The only condition is that the required version has already been stored inside the Cache.
 
-### بروزرسانی پکیج‌ها
+## Important Notes
 
-Verdaccio فقط نسخه‌هایی را ذخیره می‌کند که کاربران درخواست کرده باشند. هیچ پکیجی به صورت خودکار دانلود نمی‌شود.
+### Do not delete Storage
+
+The Storage folder contains the entire system's Cache. Deleting it is equivalent to re-downloading all packages.
+
+### Updating packages
+
+Verdaccio only stores versions that users have requested. No package is downloaded automatically.

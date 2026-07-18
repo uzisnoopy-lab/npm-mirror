@@ -3,7 +3,7 @@ storage: /verdaccio/storage
 plugins: /verdaccio/plugins
 
 web:
-  title: Mananeagaar NPM Mirror
+  title: Cipherunit NPM Mirror
 
 server:
   keepAliveTimeout: 60

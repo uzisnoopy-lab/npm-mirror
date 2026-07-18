@@ -1,45 +1,45 @@
-# نصب و راه‌اندازی
+# Installation and Setup
 
-## پیش‌نیازها
+## Prerequisites
 
 - Docker
 - Docker Compose
 - Make
 
-## ۱. کلون کردن پروژه
+## 1. Clone the project
 
 ```bash
 git clone https://github.com/MohammadTahaBatoomi/npm-mirror
 cd npm_mirrors
 ```
 
-## ۲. اجرای سرویس
+## 2. Run the service
 
 ```bash
 make up
 ```
 
-## ۳. بررسی وضعیت
+## 3. Check the status
 
 ```bash
 make ps
 ```
 
-یا
+or
 
 ```bash
 make logs
 ```
 
-## ۴. دسترسی به Registry
+## 4. Access the Registry
 
-پس از اجرا، Registry در آدرس زیر قابل دسترسی است:
+Once running, the Registry is accessible at the following address:
 
 ```
 http://localhost:4873
 ```
 
-## دستورات Makefile
+## Makefile Commands
 
 ```
 make up        - Start Verdaccio
