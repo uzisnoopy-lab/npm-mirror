@@ -1,13 +1,16 @@
 [project]
-site_name = "NPM Mirror"
-site_description = "An internal Verdaccio-based Registry for mirroring and caching npm"
+site_name = "NPM Mirror — Self-Hosted Verdaccio Registry & Offline NPM Cache"
+site_description = "NPM Mirror is a self-hosted npm registry built on Verdaccio that mirrors and caches npm/pnpm/yarn packages. Keep installing dependencies fast, offline-capable, and available even during internet outages — by Cipher Unit."
 site_author = "Mohammad Taha Batoomi"
+site_url = "https://cipherunits.github.io/npm-mirror/"
+copyright = "Copyright &copy; 2026 Cipher Unit"
+
 repo_url = "https://github.com/cipherunits/npm-mirror"
+repo_name = "cipherunits/npm-mirror"
 edit_uri = "edit/main/docs/"
 
 docs_dir = "docs"
 site_dir = "site"
-
 language = "en"
 
 nav = [
@@ -32,8 +35,15 @@ features = [
   "content.code.copy",
   "content.footnote.tooltips",
   "content.tooltips",
-  "search.highlight"
+  "search.highlight",
+  "search.share",
+  "search.suggest"
 ]
+
+[project.theme]
+custom_dir = "overrides"
+logo = "images/logo.png"
+favicon = "images/favicon.png"
 
 [[project.theme.palette]]
 media = "(prefers-color-scheme: light)"
@@ -50,3 +60,27 @@ toggle.name = "Switch to light mode"
 [[project.extra.social]]
 icon = "fontawesome/brands/github"
 link = "https://github.com/cipherunits/npm-mirror"
+name = "npm-mirror on GitHub"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/cipherunits"
+name = "Cipher Unit on GitHub"
+
+[[project.extra.social]]
+icon = "material/web"
+link = "https://cipherunit.xyz"
+name = "Cipher Unit website"
+
+[[project.extra.social]]
+icon = "fontawesome/solid/envelope"
+link = "mailto:cipherunit.dev@gmail.com"
+name = "Email Cipher Unit"
+
+[project.extra]
+homepage = "https://cipherunit.xyz"
+generator = false
+og_image = "https://res.cloudinary.com/djc6gxgjc/image/upload/q_auto/f_auto/v1781272726/CipherUnitWithoutBG_zbbq4w.png"
+twitter_image = "https://res.cloudinary.com/djc6gxgjc/image/upload/q_auto/f_auto/v1781272726/SharpCipherUnit_krk0zv.png"
+org_logo = "https://res.cloudinary.com/djc6gxgjc/image/upload/q_auto/f_auto/v1781272725/CipherUnit_gkjt2m.jpg"
+keywords = "npm mirror, verdaccio registry, offline npm cache, private npm registry, npm proxy cache, self-hosted npm, pnpm mirror, yarn mirror, npm registry Iran, internet outage npm cache, local package cache, dependency mirror"

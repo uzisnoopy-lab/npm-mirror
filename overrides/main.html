@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {% set description = page.meta.description if page and page.meta and page.meta.description else config.site_description %}
+  {% set page_title = page.title if page and page.title else config.site_name %}
+  {% set canonical = page.canonical_url if page and page.canonical_url else config.site_url %}
+
+  <meta name="keywords" content="{{ config.extra.keywords }}" />
+  <meta name="author" content="{{ config.site_author }}" />
+  <link rel="canonical" href="{{ canonical }}" />
+  <meta name="robots" content="{{ page.meta.robots if page and page.meta and page.meta.robots else 'index, follow' }}" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="{{ config.site_name }}" />
+  <meta property="og:title" content="{{ page_title }}" />
+  <meta property="og:description" content="{{ description }}" />
+  <meta property="og:url" content="{{ canonical }}" />
+  <meta property="og:image" content="{{ config.extra.og_image }}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ page_title }}" />
+  <meta name="twitter:description" content="{{ description }}" />
+  <meta name="twitter:image" content="{{ config.extra.twitter_image }}" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "NPM Mirror",
+    "description": "{{ config.site_description }}",
+    "codeRepository": "{{ config.repo_url }}",
+    "programmingLanguage": ["Shell", "Makefile"],
+    "license": "https://opensource.org/licenses/MIT",
+    "url": "{{ config.site_url }}",
+    "author": {
+      "@type": "Organization",
+      "name": "Cipher Unit",
+      "url": "https://cipherunit.xyz",
+      "logo": "{{ config.extra.org_logo }}",
+      "sameAs": [
+        "https://github.com/cipherunits",
+        "https://cipherunit.xyz"
+      ]
+    }
+  }
+  </script>
+{% endblock %}
